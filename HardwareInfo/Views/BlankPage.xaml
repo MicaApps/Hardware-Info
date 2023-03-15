@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="HardwareInfo.Views.BlankPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:HardwareInfo.Models"
+    mc:Ignorable="d">
+
+    <Grid x:Name="ContentArea" Margin="0,0,0,40">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ListView Grid.Column="0" x:Name="lv_hardware" Width="300" HorizontalAlignment="Left" SelectionChanged="lv_hardware_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate  x:DataType="local:HardwareData">
+                    <StackPanel  Orientation="Vertical" Margin="0,10,0,10">
+                        <TextBlock Text="{x:Bind Name,Mode=OneWay}" Style="{StaticResource ListTitleStyle}" />
+                        <TextBlock Text="{x:Bind Content,Mode=OneWay}" Style="{StaticResource ListSubTitleStyle}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView Grid.Column="1"  Margin="10,0,0,0"  x:Name="lv_hardwaredetail" >
+            <ListView.ItemTemplate>
+                <DataTemplate  x:DataType="local:HardwareData">
+                    <StackPanel  Orientation="Vertical" Margin="0,10,0,10">
+                        <TextBlock Text="{x:Bind Name,Mode=OneWay}" TextWrapping="Wrap" FontSize="30" FontWeight="Bold"/>
+                        <TextBlock Text="{x:Bind Content,Mode=OneWay}" TextWrapping="Wrap"  FontSize="14" FontWeight="Normal"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
